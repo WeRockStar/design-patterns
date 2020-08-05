@@ -26,15 +26,15 @@ class MusicPlayer(state: MusicState = MusicState.Stopped()) {
 	fun currentState(): MusicState = _state
 
 	fun play(name: String, progress: Int = _state.progress) {
-		_state = MusicState.Playing(findMusicBy(name), progress)
+		_state = MusicState.Playing(findMusic(name), progress)
 	}
 
 	fun pause() {
-		_state = MusicState.Pause(findMusicBy())
+		_state = MusicState.Pause(findMusic())
 	}
 
 	fun stop() {
-		_state = MusicState.Stopped(findMusicBy())
+		_state = MusicState.Stopped(findMusic())
 	}
 
 	fun next() {
@@ -51,7 +51,7 @@ class MusicPlayer(state: MusicState = MusicState.Stopped()) {
 
 	fun currentMusic(): String? = _state.musicName
 
-	private fun findMusicBy(name: String = currentMusic().orEmpty()) = musics.firstOrNull { it == name }.orEmpty()
+	private fun findMusic(name: String = currentMusic().orEmpty()) = musics.firstOrNull { it == name }.orEmpty()
 	private fun findMusicBy(index: Int, func: () -> String) = musics.getOrElse(index) { func() }
 	private val index = musics.indexOf(_state.musicName)
 }
