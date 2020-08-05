@@ -1,6 +1,6 @@
 language: java
 before_script:
-  gradlew assemble
+  ./gradlew assemble
 script:
-  gradlew test
+  ./gradlew test
 
