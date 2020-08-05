@@ -38,19 +38,20 @@ class MusicPlayer(state: MusicState = MusicState.Stopped()) {
 	}
 
 	fun next() {
-		val musicIndex = musics.indexOf(_state.musicName).inc()
+		val musicIndex = index.inc()
 		val musicName = findMusicBy(musicIndex) { musics.first() }
 		play(musicName, 0)
 	}
 
 	fun previous() {
-		val musicIndex = musics.indexOf(_state.musicName).dec()
+		val musicIndex = index.dec()
 		val musicName = findMusicBy(musicIndex) { musics.last() }
 		play(musicName, 0)
 	}
 
 	fun currentMusic(): String? = _state.musicName
 
-	private fun findMusicBy(name: String = _state.musicName.orEmpty()) = musics.firstOrNull { it == name }.orEmpty()
+	private fun findMusicBy(name: String = currentMusic().orEmpty()) = musics.firstOrNull { it == name }.orEmpty()
 	private fun findMusicBy(index: Int, func: () -> String) = musics.getOrElse(index) { func() }
+	private val index = musics.indexOf(_state.musicName)
 }

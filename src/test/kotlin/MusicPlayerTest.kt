@@ -76,14 +76,10 @@ class MusicPlayerTest {
 
 	@Test
 	fun `while music is playing at the last music, when user press a next button should transition to the first music in the list`() {
-		val currentMusicName = "Don't care"
+		val currentMusicName = "วิบวับ"
 		val currentProgress = 10
 		val player = MusicPlayer(MusicState.Playing(currentMusicName, currentProgress))
 
-		player.next()
-		player.next()
-		player.next()
-		player.next()
 		player.next()
 
 		val expectFirstMusic = "Don't care"
