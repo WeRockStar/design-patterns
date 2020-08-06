@@ -7,8 +7,8 @@ class MusicPlayerTest {
 	fun `initial state should be stopped state`() {
 		val player = MusicPlayer()
 
-		assertTrue(player.currentState() is MusicState.Stopped)
-		assertNull(player.currentMusic())
+		assertTrue(player.currentState is MusicState.Stopped)
+		assertNull(player.currentMusic)
 	}
 
 	@Test
@@ -18,8 +18,8 @@ class MusicPlayerTest {
 
 		player.play(musicName)
 
-		assertTrue(player.currentState() is MusicState.Playing)
-		assertEquals(musicName, player.currentMusic())
+		assertTrue(player.currentState is MusicState.Playing)
+		assertEquals(musicName, player.currentMusic)
 	}
 
 	@Test
@@ -29,8 +29,8 @@ class MusicPlayerTest {
 
 		player.pause()
 
-		assertTrue(player.currentState() is MusicState.Pause)
-		assertEquals(musicName, player.currentMusic())
+		assertTrue(player.currentState is MusicState.Pause)
+		assertEquals(musicName, player.currentMusic)
 	}
 
 	@Test
@@ -40,9 +40,9 @@ class MusicPlayerTest {
 
 		player.stop()
 
-		assertTrue(player.currentState() is MusicState.Stopped)
-		assertEquals(musicName, player.currentMusic())
-		assertEquals(0, player.currentState().progress)
+		assertTrue(player.currentState is MusicState.Stopped)
+		assertEquals(musicName, player.currentMusic)
+		assertEquals(0, player.currentState.progress)
 	}
 
 	@Test
@@ -53,9 +53,9 @@ class MusicPlayerTest {
 
 		player.play(musicName)
 
-		assertTrue(player.currentState() is MusicState.Playing)
-		assertEquals(currentProgress, player.currentState().progress)
-		assertEquals(musicName, player.currentMusic())
+		assertTrue(player.currentState is MusicState.Playing)
+		assertEquals(currentProgress, player.currentState.progress)
+		assertEquals(musicName, player.currentMusic)
 	}
 
 	@Test
@@ -69,9 +69,9 @@ class MusicPlayerTest {
 		val expectNextMusic = "ไส่ว่าสิบ่ถิ่มกัน"
 		val expectStartAt = 0
 
-		assertTrue(player.currentState() is MusicState.Playing)
-		assertEquals(expectStartAt, player.currentState().progress)
-		assertEquals(expectNextMusic, player.currentMusic())
+		assertTrue(player.currentState is MusicState.Playing)
+		assertEquals(expectStartAt, player.currentState.progress)
+		assertEquals(expectNextMusic, player.currentMusic)
 	}
 
 	@Test
@@ -85,9 +85,9 @@ class MusicPlayerTest {
 		val expectFirstMusic = "Don't care"
 		val expectStartAt = 0
 
-		assertTrue(player.currentState() is MusicState.Playing)
-		assertEquals(expectStartAt, player.currentState().progress)
-		assertEquals(expectFirstMusic, player.currentMusic())
+		assertTrue(player.currentState is MusicState.Playing)
+		assertEquals(expectStartAt, player.currentState.progress)
+		assertEquals(expectFirstMusic, player.currentMusic)
 	}
 
 	@Test
@@ -101,9 +101,9 @@ class MusicPlayerTest {
 		val expectPreviousMusic = "Don't care"
 		val expectStartAt = 0
 
-		assertTrue(player.currentState() is MusicState.Playing)
-		assertEquals(expectStartAt, player.currentState().progress)
-		assertEquals(expectPreviousMusic, player.currentMusic())
+		assertTrue(player.currentState is MusicState.Playing)
+		assertEquals(expectStartAt, player.currentState.progress)
+		assertEquals(expectPreviousMusic, player.currentMusic)
 	}
 
 	@Test
@@ -117,8 +117,8 @@ class MusicPlayerTest {
 		val expectPreviousMusic = "วิบวับ"
 		val expectStartAt = 0
 
-		assertTrue(player.currentState() is MusicState.Playing)
-		assertEquals(expectStartAt, player.currentState().progress)
-		assertEquals(expectPreviousMusic, player.currentMusic())
+		assertTrue(player.currentState is MusicState.Playing)
+		assertEquals(expectStartAt, player.currentState.progress)
+		assertEquals(expectPreviousMusic, player.currentMusic)
 	}
 }
