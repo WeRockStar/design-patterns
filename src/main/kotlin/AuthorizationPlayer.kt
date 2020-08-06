@@ -11,9 +11,11 @@ sealed class State {
 
 class AuthorizationPlayer(state: State = State.Unauthorized) {
 
+	val isAuthorized: Boolean get() = _state is State.Authorized
+
 	private var _state: State = state
 
-	fun currentState(): State = _state
+	val currentState: State get() =_state
 
 	fun login(userId: String) {
 		_state = State.Authorized(userId)
